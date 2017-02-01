@@ -5,24 +5,18 @@ import {TodoForm, TodoList} from './components/todo';
 import {addTodo, generateId} from './lib/todoHelpers';
 
 class App extends Component {
-    constructor() {
-        super();
 
-        this.state = {
-            todos: [
-                {id: 1, name: 'Learn JSX', isComplete: true},
-                {id: 2, name: 'Build an Awesome App', isComplete: false},
-                {id: 3, name: 'Ship It!', isComplete: false}
-            ],
-            currentTodo: ''
-        };
+    // Instance variable(s) on this class using property initializer syntax
+    state = {
+        todos: [
+            {id: 1, name: 'Learn JSX', isComplete: true},
+            {id: 2, name: 'Build an Awesome App', isComplete: false},
+            {id: 3, name: 'Ship It!', isComplete: false}
+        ],
+        currentTodo: ''
+    };
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
-    }
-
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
 
         const newId = generateId();
@@ -38,21 +32,21 @@ class App extends Component {
             currentTodo: '',
             errorMessage: ''
         });
-    }
+    };
 
-    handleEmptySubmit(event) {
+    handleEmptySubmit = (event) => {
         event.preventDefault();
 
         this.setState({
             errorMessage: 'Please supply a todo name'
         });
-    }
+    };
 
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         this.setState({
             currentTodo: event.target.value
         });
-    }
+    };
 
     render() {
         const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
