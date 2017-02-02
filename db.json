@@ -13,22 +13,22 @@
     {
       "id": 3,
       "name": "Connect to Server",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 4,
       "name": "Setup fetch",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 290165,
       "name": "New Todo",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 527029,
       "name": "Another new todo",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 837261,
