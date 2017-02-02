@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo';
-import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers';
+import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils';
 
 class App extends Component {
@@ -15,6 +15,10 @@ class App extends Component {
             {id: 3, name: 'Ship It!', isComplete: false}
         ],
         currentTodo: ''
+    };
+
+    static contextTypes = {
+        route: React.PropTypes.string
     };
 
     handleRemove = (id, event) => {
@@ -70,6 +74,7 @@ class App extends Component {
 
     render() {
         const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
+        const displayTodos = filterTodos(this.state.todos, this.context.route);
 
         return (
             <div className="App">
@@ -86,7 +91,7 @@ class App extends Component {
                     />
                     <TodoList
                         handleToggle={this.handleToggle}
-                        todos={this.state.todos}
+                        todos={displayTodos}
                         handleRemove={this.handleRemove}
                     />
                     <Footer/>
